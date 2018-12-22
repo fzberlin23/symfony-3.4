@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: vegas-php-dev-image
+    container_name: vegas-php-dev
+    environment:
+      - DATABASE_URL=mysql://root:root@db:3306/project_db
+    volumes:
+      - ./:/var/www/vegas/
+    networks:
+      - symfony
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    image: vegas-nginx-dev-image
+    container_name: vegas-nginx-dev
+    volumes:
+      - ./:/var/www/vegas/
+    ports:
+      - 8001:80
+    networks:
+      - symfony
+
+  db:
+    build:
+      context: .
+      dockerfile: docker/mysql/Dockerfile
+    image: vegas-mysql-dev-image
+    container_name: vegas-mysql-dev
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - symfony_db:/var/lib/mysql:cached
+    ports:
+      - 3311:3306
+    networks:
+      - symfony
+
+volumes:
+  symfony_db:
+
+networks:
+  symfony:
