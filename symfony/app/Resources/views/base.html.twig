@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta charset="UTF-8">
+        <title>{% block title %}Project Vegas{% endblock %}</title>
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        <header style="background-color: #4eb3e5; margin-bottom:8px;">Project Vegas (Header)</header>
+
+        <div style="overflow:hidden;">
+            <div id="sidebar" style="float:left; width:20%;">
+                {% block sidebar %}
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="{{ path('products') }}">Products</a></li>
+                    </ul>
+                {% endblock %}
+            </div>
+
+            <div id="content" style="float:left; width:80%">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+
+        <footer style="background-color: #4eb3e5; margin-top:24px;">Project Vegas (Footer)</footer>
+
     </body>
 </html>
