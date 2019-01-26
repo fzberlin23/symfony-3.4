@@ -21,7 +21,8 @@
             <td>{{ product.description }}</td>
             <td>
                 <a href="{{ path('productsshow', {productId: product.id}) }}">show</a> |
-                <a href="{{ path('productsedit', {productId: product.id}) }}">edit</a>
+                <a href="{{ path('productsedit', {productId: product.id}) }}">edit</a> |
+                <a href="{{ path('productsdelete', {productId: product.id, sure: 0}) }}">delete</a>
             </td>
         </tr>
     {% endfor %}

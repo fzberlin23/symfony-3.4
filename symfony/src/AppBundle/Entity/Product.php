@@ -28,6 +28,11 @@
         private $price;
 
         /**
+         * @ORM\Column(type="boolean")
+         */
+        private $deleted;
+
+        /**
          * @ORM\Column(type="text")
          */
         private $description;
@@ -62,5 +67,13 @@
 
         public function setDescription($description) {
             $this->description = $description;
+        }
+
+        public function getDeleted() {
+            return $this->deleted;
+        }
+
+        public function setDeleted($deleted) {
+            $this->deleted = $deleted;
         }
     }

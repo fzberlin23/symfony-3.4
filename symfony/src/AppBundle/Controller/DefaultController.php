@@ -28,7 +28,7 @@ class DefaultController extends Controller
     public function listAction()
     {
         $repository = $this->getDoctrine()->getRepository(Product::class);
-        $products = $repository->findAll();
+        $products = $repository->findBy(['deleted' => 0]);
         return $this->render('product/list.html.twig', array(
             'products' => $products,
         ));
@@ -109,6 +109,28 @@ class DefaultController extends Controller
         return $this->render('product/edit.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/products/delete/{productId}/{sure}", name="productsdelete")
+     */
+    public function deleteAction(int $productId, int $sure) {
+
+        $product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+        if ($sure === 1) {
+
+            $product->setDeleted(1);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('products');
+
+        }
+
+        return $this->render('product/delete.html.twig', ['product' => $product]);
     }
 
 }
