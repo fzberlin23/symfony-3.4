@@ -1,29 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Project Vegas{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}My symfony project{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
     </head>
     <body>
-
-        <header style="background-color: #4eb3e5; margin-bottom:8px;">Project Vegas (Header)</header>
-
-        <div style="overflow:hidden;">
-            <div id="sidebar" style="float:left; width:20%;">
-                {% block sidebar %}
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="{{ path('products') }}">Products</a></li>
-                    </ul>
-                {% endblock %}
+        <div id="wrapper" class="toggled">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="/">
+                            My symfony project
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('products') }}">Products</a>
+                    </li>
+                    <li>
+                        <a href="#">Overview</a>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('contact') }}">Contact</a>
+                    </li>
+                </ul>
             </div>
-
-            <div id="content" style="float:left; width:80%">
-                {% block body %}{% endblock %}
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    {% block body %}{% endblock %}
+                </div>
             </div>
         </div>
-
-        <footer style="background-color: #4eb3e5; margin-top:24px;">Project Vegas (Footer)</footer>
-
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     </body>
 </html>

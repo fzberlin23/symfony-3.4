@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Edit product</h1>
+    <h1>Edit product</h1>
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 
-<br/>
-<a href="{{ path('products') }}">back to products list</a>
-
+    <br/>
+    <a href="{{ path('products') }}"><< Back to products</a>
 {% endblock %}
