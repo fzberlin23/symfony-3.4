@@ -30,6 +30,13 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/ticTacToe", name="ticTacToe")
+     */
+    public function ticTacToeAction() {
+        return $this->render('default/ticTacToe.html.twig');
+    }
+
+    /**
      * @Route("/products", name="products")
      */
     public function listAction()
