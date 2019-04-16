@@ -18,7 +18,6 @@ docker + docker-compose
 
 ```
 git clone git@github.com:fzberlin23/symfony-3.4.git .
-Modify docker-compose.yml and set the "volumes" path appropriately
 docker-compose up -d
 docker exec -it vegas-php-dev bash
 composer install

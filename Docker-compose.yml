@@ -1,19 +1,12 @@
 version: "3"
 
-services:
-  php:
-    build:
-      context: .
-      dockerfile: docker/php/Dockerfile
-    image: vegas-php-dev-image
-    container_name: vegas-php-dev
-    environment:
-      - DATABASE_URL=mysql://root:root@db:3306/project_db
-    volumes:
-      - ./:/var/www/vegas:cached
-    networks:
-      - symfony
+volumes:
+  symfony_db:
 
+networks:
+  symfony:
+
+services:
   nginx:
     build:
       context: .
@@ -24,6 +17,19 @@ services:
       - ./:/var/www/vegas:cached
     ports:
       - 8001:80
+    networks:
+      - symfony
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: vegas-php-dev-image
+    container_name: vegas-php-dev
+    environment:
+      - DATABASE_URL=mysql://root:root@db:3306/project_db
+    volumes:
+      - ./:/var/www/vegas:cached
     networks:
       - symfony
 
@@ -41,9 +47,3 @@ services:
       - 3311:3306
     networks:
       - symfony
-
-volumes:
-  symfony_db:
-
-networks:
-  symfony:
