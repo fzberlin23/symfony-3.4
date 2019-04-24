@@ -12,6 +12,8 @@ services:
       context: .
       dockerfile: docker/nginx/Dockerfile
     image: vegas-nginx-dev-image
+    cap_drop: [all]
+    cap_add: [chown, setuid, setgid, dac_override, net_bind_service]
     container_name: vegas-nginx-dev
     volumes:
       - ./:/var/www/vegas:cached
