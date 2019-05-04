@@ -32,11 +32,9 @@ services:
     networks:
       - symfony
   db:
-    build: docker/mysql
-    image: vegas-mysql-dev-image
+    image: mysql:5.7
     cap_drop: [all]
     cap_add: [chown, setgid, setuid, dac_override]
-    container_name: vegas-mysql-dev
     environment:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
