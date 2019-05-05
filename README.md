@@ -11,16 +11,20 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-docker + docker-compose
+git + docker + docker-compose
 ```
 
 ### Installing
 
 ```
 git clone git@github.com:fzberlin23/symfony-3.4.git .
-docker-compose up -d
-docker exec -it vegas-php-dev bash
-composer install
+docker-compose -f docker-compose.yml -f docker-compose-oneshot.yml run --rm composer install
+```
+
+### Run the application
+
+```
+docker-compose up
 Visit http://localhost:8001
 ```
 
