@@ -9,10 +9,8 @@ networks:
 services:
   nginx:
     build: docker/nginx
-    image: vegas-nginx-dev-image
     cap_drop: [all]
     cap_add: [chown, setgid, setuid, dac_override, net_bind_service]
-    container_name: vegas-nginx-dev
     volumes:
       - ./:/var/www/vegas:cached
     ports:
@@ -21,10 +19,8 @@ services:
       - symfony
   php:
     build: docker/php
-    image: vegas-php-dev-image
     cap_drop: [all]
     cap_add: [chown, setgid, setuid, dac_override]
-    container_name: vegas-php-dev
     environment:
       - DATABASE_URL=mysql://root:root@db:3306/project_db
     volumes:
